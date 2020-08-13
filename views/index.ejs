@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA Automation Testing</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+</head>
+    <body>
+        <div class="container">
+            <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+            <div class="row bg-light">
+                <div class="col-12">
+                    <h1>QA Automation Testing</h1>
+                    <small class="form-text text-muted pb-3">powered by : Selenium Webdriver</small>
+                </div>
+            </div>
+            <form method="POST" action="/buttonlogin">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th colspan='10'>Login Page Module</th>
+                        </tr>
+                        <tr>
+                            <th colspan='10' class="p-0">
+                                <span class="text-danger"><%=error%></span>
+                                <select class="form-control" name="address">
+                                    <option selected disabled>Select site to check...</option>
+                                    <option value="qa1">QA1</option>
+                                    <option value="qa2">QA2</option>
+                                </select>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td class='text-right'>Username : </td>
+                            <td class='p-1'>
+                                <input type="text" class="form-control" name="uname" value='skydev'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td class='text-right'>Password : </td>
+                            <td class='p-1'>
+                                <input type="password" class="form-control" name="pwd" value='skydev1234'>
+                                <small class="form-text text-muted" style='font-size:10px;'>Default password is skydev1234</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='p-1' colspan='10'>
+                                <input type="submit" class="btn btn-primary btn-lg btn-block p-1" id='buttonlogin' value="Check Login Page" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <form method="POST" action="/buttonregister">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th colspan='10'>Registration Page Module</th>
+                        </tr>
+                        <tr>
+                            <th colspan='10' class="p-0">
+                                <span class="text-danger"><%=error1%></span>
+                                <select class="form-control" name="address">
+                                    <option selected disabled>Select site to check...</option>
+                                    <option value="qa1">QA1</option>
+                                    <option value="qa2">QA2</option>
+                                </select>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td class='text-right'>Username : </td>
+                            <td class='p-1'>
+                                <input type="text" class="form-control" name="unamer" value='skydev'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td class='text-right'>Password : </td>
+                            <td class='p-1'>
+                                <input type="password" class="form-control" name="pwdr" value='skydev1234'>
+                                <small class="form-text text-muted" style='font-size:10px;'>Default password is skydev1234</small>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td class='text-right'>Email Address : </td>
+                            <td class='p-1'>
+                                <input type="text" class="form-control" name="emailadd" value='francisregala@skydev.solutions'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td class='text-right'>Birthday : </td>
+                            <td class='p-1'>
+                                <input class="form-control" type="date" value="2000-01-10" name="bday">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class='p-1' colspan='10'>
+                                <input type="submit" class="btn btn-danger btn-lg btn-block p-1" value="Check Registration Page" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+    </body>
+</html>
