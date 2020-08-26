@@ -4,30 +4,30 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
-app.get('/', function(req, res){
-    res.render('index', {error: '',error1: ''});
+app.get("/", function(req, res){
+    res.render("index", {error: "",error1: ""});
 });
 
-app.post('/buttonlogin', urlencodedParser, function(req, res){
+app.post("/buttonlogin", urlencodedParser, function(req, res){
     if(req.body.address==undefined){
-        res.render('index', {error: 'Access Denied! Please select site first...',error1: ''});
+        res.render("index", {error: "Access Denied! Please select site first...",error1: ""});
     }else{
         const {Builder, By, Key, util} = require("selenium-webdriver");
-        var useragent = require('useragent');
-        var agent2 = useragent.parse(req.headers['user-agent'], req.query.jsuseragent);
+        var useragent = require("useragent");
+        var agent2 = useragent.parse(req.headers["user-agent"], req.query.jsuseragent);
 
-        if(agent2.family=='Chrome'){
+        if(agent2.family=="Chrome"){
             require("chromedriver");
             var browser = "chrome";
-        }else if(agent2.family=='Firefox'){
+        }else if(agent2.family=="Firefox"){
             require("geckodriver");
             var browser = "firefox";
-        }else if(agent2.family=='Edge'){
-            res.render('index', {error: 'Access Denied! MS Edge not yet supported by Selenium. Please use other browser. Thank You.',error1: ''});
+        }else if(agent2.family=="Edge"){
+            res.render("index", {error: "Access Denied! MS Edge not yet supported by Selenium. Please use other browser. Thank You.",error1: ""});
             //const edge = require("@microsoft/edge-selenium-tools");
             // Launch Microsoft Edge (EdgeHTML)
             //let driver = edge.Driver.createSession();
@@ -37,7 +37,7 @@ app.post('/buttonlogin', urlencodedParser, function(req, res){
         }
         let driver = new Builder().forBrowser(browser).build();
 
-        if(req.body.address=='qa1'){
+        if(req.body.address=="qa1"){
             var address = "https://volumeup-qa1.skydev.solutions/login";
             var unameid = "__BVID__15";
             var pwdid = "__BVID__17";
@@ -58,33 +58,33 @@ app.post('/buttonlogin', urlencodedParser, function(req, res){
         driver.findElement(By.xpath(xPath)).click();
     
         console.log(req.body);
-        res.redirect('/');
-        //res.send('testing');
+        res.redirect("/");
+        //res.send("testing");
     }
     
 });
 
-app.post('/buttonregister', urlencodedParser, function(req, res){
+app.post("/buttonregister", urlencodedParser, function(req, res){
     console.log(req.body);
-    if(req.body.address==undefined){
-        res.render('index', {error: '',error1: 'Access Denied! Please select site first...'});
+    if(req.body.address===undefined){
+        res.render("index", {error: "",error1: "Access Denied! Please select site first..."});
     }else{
         const {Builder, By, Key, util} = require("selenium-webdriver");
-        var useragent = require('useragent');
-        var agent2 = useragent.parse(req.headers['user-agent'], req.query.jsuseragent);
+        var useragent = require("useragent");
+        var agent2 = useragent.parse(req.headers["user-agent"], req.query.jsuseragent);
 
-        if(agent2.family=='Chrome'){
+        if(agent2.family==="Chrome"){
             require("chromedriver");
             var browser = "chrome";
-        }else if(agent2.family=='Firefox'){
+        }else if(agent2.family==="Firefox"){
             require("geckodriver");
             var browser = "firefox";
-        }else if(agent2.family=='Edge'){
-            res.render('index', {error: 'Access Denied! MS Edge not yet supported by Selenium. Please use other browser. Thank You.',error1: ''});
+        }else if(agent2.family==="Edge"){
+            res.render("index", {error: "Access Denied! MS Edge not yet supported by Selenium. Please use other browser. Thank You.",error1: ""});
         }
         let driver = new Builder().forBrowser(browser).build();
 
-        if(req.body.address=='qa1'){
+        if(req.body.address==="qa1"){
             var address = "https://volumeup-qa1.skydev.solutions/register";
             var unamerid = "__BVID__14";
             var pwdrid = "__BVID__16";
@@ -118,21 +118,21 @@ app.post('/buttonregister', urlencodedParser, function(req, res){
         driver.findElement(By.xpath(xPath)).click();
     
         console.log(req.body);
-        res.redirect('/');
-        //res.send('testing');
+        res.redirect("/");
+        //res.send("testing");
     }
 });
 
-app.get('/ua', function(req, res){
-    var useragent = require('useragent');
+app.get("/ua", function(req, res){
+    var useragent = require("useragent");
     //useragent(true);
-    //var agent = useragent.lookup(req.headers['user-agent']);
-    var agent2 = useragent.parse(req.headers['user-agent'], req.query.jsuseragent);
-    //var ua = useragent.is(req.headers['user-agent'])
+    //var agent = useragent.lookup(req.headers["user-agent"]);
+    var agent2 = useragent.parse(req.headers["user-agent"], req.query.jsuseragent);
+    //var ua = useragent.is(req.headers["user-agent"])
 
-    res.send('user ' + agent2.family);
+    res.send("user " + agent2.family);
 });
 
-app.listen(3000,'localhost');
+app.listen(3000,"localhost");
 
-console.log('Port 3000');
+console.log("Port 3000");
