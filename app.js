@@ -13,20 +13,20 @@ app.get("/", function(req, res){
 });
 
 app.post("/buttonlogin", urlencodedParser, function(req, res){
-    if(req.body.address==undefined){
+    if(req.body.address===undefined){
         res.render("index", {error: "Access Denied! Please select site first...",error1: ""});
     }else{
         const {Builder, By, Key, util} = require("selenium-webdriver");
         var useragent = require("useragent");
         var agent2 = useragent.parse(req.headers["user-agent"], req.query.jsuseragent);
 
-        if(agent2.family=="Chrome"){
+        if(agent2.family==="Chrome"){
             require("chromedriver");
             var browser = "chrome";
-        }else if(agent2.family=="Firefox"){
+        }else if(agent2.family==="Firefox"){
             require("geckodriver");
             var browser = "firefox";
-        }else if(agent2.family=="Edge"){
+        }else if(agent2.family==="Edge"){
             res.render("index", {error: "Access Denied! MS Edge not yet supported by Selenium. Please use other browser. Thank You.",error1: ""});
             //const edge = require("@microsoft/edge-selenium-tools");
             // Launch Microsoft Edge (EdgeHTML)
@@ -37,7 +37,7 @@ app.post("/buttonlogin", urlencodedParser, function(req, res){
         }
         let driver = new Builder().forBrowser(browser).build();
 
-        if(req.body.address=="qa1"){
+        if(req.body.address==="qa1"){
             var address = "https://volumeup-qa1.skydev.solutions/login";
             var unameid = "__BVID__15";
             var pwdid = "__BVID__17";
